@@ -1,9 +1,12 @@
 <template>
   <div class="box">
     <form v-on:submit.prevent>
-      <input type="text">
+      <input type="text" v-model="newItem">
       <button v-on:click="addItem">Add</button>
+      <!-- {{ $data }} -->
     </form>
+
+    <div class="list">{{ newItem }}</div>
   </div>
 </template>
 
@@ -11,7 +14,8 @@
 export default {
   data() {
     return {
-      msg: "Hello"
+      msg: "Hello",
+      newItem: ""
     };
   },
   methods: {
