@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img width="20%" src="./assets/logo.png">
+    <img width="60px" src="./assets/logo.png">
     <!-- <HelloWorld msg="Hello Vue in CodeSandbox!"/> -->
     <ToDo/>
   </div>
