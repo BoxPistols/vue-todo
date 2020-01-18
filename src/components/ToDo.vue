@@ -1,6 +1,6 @@
 <template lang="pug">
   div.todoBox
-    p test
+    p test!!
     
 </template>
 
