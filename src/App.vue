@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <img width="60px" src="./assets/logo.png">
+    <img width="60px" src="./assets/logo.png" />
     <!-- <HelloWorld msg="Hello Vue in CodeSandbox!"/> -->
-    <ToDo/>
+    <ToDo />
   </div>
 </template>
 
@@ -14,12 +14,14 @@ export default {
   name: "App",
   components: {
     // HelloWorld,
-    ToDo
-  }
+    ToDo,
+  },
 };
 </script>
 
 <style lang="sass" scoped>
+@import url("https://bootstrapbuildspace.sfo2.cdn.digitaloceanspaces.com//NYsiLXJhQPZL/avwgbGyXdigf/bootstrap.min.css")
+
 #app
   font-family: "Avenir", Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
