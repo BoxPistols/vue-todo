@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img width="60px" src="./assets/logo.png" />
+    <div class="flex center">
+      <img width="60px" src="./assets/logo.png" />
+    </div>
     <!-- <HelloWorld msg="Hello Vue in CodeSandbox!"/> -->
     <ToDo />
   </div>
@@ -23,10 +25,11 @@ export default {
 @import url("https://bootstrapbuildspace.sfo2.cdn.digitaloceanspaces.com//NYsiLXJhQPZL/avwgbGyXdigf/bootstrap.min.css")
 
 #app
-  font-family: "Avenir", Helvetica, Arial, sans-serif
+  font-family: "Avenir", Helvetica, _Segoe UI, _Arial, BIZ UDPゴシック, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   text-align: center
   color: #2c3e50
-  margin-top: 60px
+  margin: 20px auto
+  font-size: 1.15em
 </style>

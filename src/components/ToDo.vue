@@ -1,38 +1,55 @@
 <template>
   <div class="box">
-    <code class="debug">
-      {{ $data.newItem }}
-      <br />
-      {{ $data.todos }}
-    </code>
+    <!-- <code class="debug">
+      <ul v-for="todo in $data.todos" :key="todo.index">
+        <li>{{ todo }}</li>
+      </ul>
+    </code> -->
 
-    <b-card bg-variant="light">
-      <b-form-group
-        label-cols-lg="3"
-        label="Shipping Address"
-        label-size="lg"
-        label-class="font-weight-bold pt-0"
-        class="mb-0"
-      >
-        <b-form-group
-          label="Street:"
-          label-for="nested-street"
-          label-cols-sm="3"
-          label-align-sm="right"
-        >
-          <b-form inline v-on:submit.prevent class="flex">
-            <b-form-input
-              id="nested-street"
-              v-model="newItem"
-              placeholder="input..."
-            ></b-form-input>
-            <button class="ml-1 btn btn-primary" v-on:click="addItem">
-              Add
-            </button>
-          </b-form>
-        </b-form-group>
-      </b-form-group>
-    </b-card>
+    <div class="section">
+      <b-card-group>
+        <b-card bg-variant="dark" text-variant="light">
+          <b-form-group
+            label-cols-lg="3"
+            label="Todo Lists on Vue"
+            label-size="lg"
+            label-class="pt-0"
+            class="mb-0"
+          >
+            <b-form-group
+              label="Items:"
+              label-for="my-items"
+              label-cols-sm="3"
+              label-align-sm="right"
+            >
+              <b-form inline v-on:submit.prevent class="flex">
+                <b-form-input
+                  id="my-items"
+                  v-model="newItem"
+                  placeholder="input..."
+                ></b-form-input>
+                <button class="ml-1 btn btn-primary" v-on:click="addItem">
+                  Add
+                </button>
+              </b-form>
+            </b-form-group>
+          </b-form-group>
+        </b-card>
+      </b-card-group>
+    </div>
+
+    <!-- Add Lists -->
+    <div class="section">
+      <b-card-group>
+        <b-card no-body header="Card with flush list group">
+          <b-list-group flush v-for="todo in $data.todos" :key="todo.index">
+            <b-list-group-item href="#">{{ todo.item }}</b-list-group-item>
+          </b-list-group>
+        </b-card>
+      </b-card-group>
+    </div>
+
+    <!-- /Add Lists -->
   </div>
 </template>
 
@@ -43,7 +60,6 @@ export default {
       msg: "Hello",
       newItem: "",
       todos: [],
-      // sizes: ["Small", "Medium", "Large", "Extra Large"],
     };
   },
   methods: {
@@ -64,10 +80,16 @@ export default {
 .box {
   margin: 4vw;
 }
+
+.section {
+  margin-top: 24px;
+  box-shadow: 2px 4px 8px lightgray;
+  border-radius: 12px;
+}
+
 .flex {
   display: flex;
   flex-wrap: nowrap;
   padding: 4px;
-  /* background: tomato; */
 }
 </style>

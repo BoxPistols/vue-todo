@@ -1,0 +1,12 @@
+
+// Common Style
+.flex {
+  display: flex;
+  &.center {
+    align-items: center;
+    justify-content: center;
+  }
+  &.wrap{
+    flex-wrap: nowrap;
+  }
+}
