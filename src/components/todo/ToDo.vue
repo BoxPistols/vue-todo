@@ -65,12 +65,19 @@
 
           <b-list-group-item class="flex center pd-2">
             <div class="c-total pl-1">
-              Todo: {{ todoCount }} => Done: {{ todoRemaining }} / Total:
+              todo: {{ todoCount }} => done: {{ todoRemaining }} / total:
               {{ todoTotal }}
             </div>
             <b-button
               class="my-1 mr-1 ml-auto"
               variant="warning"
+              size="sm"
+              v-on:click="todoClean"
+              >clean</b-button
+            >
+            <b-button
+              class="my-1 mr-1 ml-auto"
+              variant="danger"
               size="sm"
               v-on:click="delAll(index)"
               >delAll</b-button
@@ -108,12 +115,21 @@ export default {
       this.newItem = '';
     },
     delItem(index) {
-      // TODO:  Delete Status
       // alert(this.status);
-      this.todos.splice(index, 1);
+      // alert(this.todos[index].status);
+      if (!this.todos[index].status) {
+        this.todos.splice(index, 0);
+      } else {
+        this.todos.splice(index, 1);
+      }
     },
     delAll(index) {
       this.todos.splice(index, this.todos.length);
+    },
+    todoClean() {
+      this.todos = this.todos.filter(function (v) {
+        return !v.status;
+      });
     },
   },
   computed: {
@@ -151,12 +167,8 @@ export default {
   padding: 4px;
 }
 
->>> label.custom-control-label {
-  display: flex;
-  background: aliceblue;
-}
-
 .c-todos .todoDone {
   color: lightgray;
+  text-decoration: line-through;
 }
 </style>
