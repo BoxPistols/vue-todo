@@ -1,9 +1,14 @@
 <template>
   <div id="app">
+    <!-- <code class="debug">
+      {{ $data }}
+    </code> -->
+    <!-- <input type="checkbox" name="hoge" id="hoge" v-model="isDone" />
+    <label for="hoge">hoge</label> -->
+
     <div class="flex center">
       <img width="60px" src="./assets/logo.png" />
     </div>
-    <!-- <HelloWorld msg="Hello Vue in CodeSandbox!"/> -->
     <ToDo />
   </div>
 </template>
@@ -14,8 +19,12 @@ import ToDo from "./components/ToDo";
 
 export default {
   name: "App",
+  data() {
+    return {
+      // isDone: false,
+    };
+  },
   components: {
-    // HelloWorld,
     ToDo,
   },
 };
@@ -28,8 +37,8 @@ export default {
   font-family: "Avenir", Helvetica, _Segoe UI, _Arial, BIZ UDPゴシック, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  text-align: center
+  // text-align: center
   color: #2c3e50
   margin: 20px auto
-  font-size: 1.15em
+  font-size: 1em
 </style>

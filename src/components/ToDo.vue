@@ -5,7 +5,6 @@
         <li>{{ todo }}</li>
       </ul>
     </code> -->
-
     <div class="section">
       <b-card-group>
         <b-card bg-variant="dark" text-variant="light">
@@ -42,14 +41,21 @@
     <div class="section">
       <b-card-group>
         <b-card no-body header="Card with flush list group">
-          <b-list-group flush v-for="todo in $data.todos" :key="todo.index">
-            <b-list-group-item href="#">{{ todo.item }}</b-list-group-item>
+          <b-list-group flush v-for="todo in todos" :key="todo.index">
+            <b-list-group-item>
+              <b-form-checkbox value="todo" v-model="todo.status">
+                {{ todo.item }}
+              </b-form-checkbox>
+            </b-list-group-item>
           </b-list-group>
         </b-card>
       </b-card-group>
     </div>
-
     <!-- /Add Lists -->
+
+    <code class="debug">
+      {{ $data }}
+    </code>
   </div>
 </template>
 
@@ -60,14 +66,15 @@ export default {
       msg: "Hello",
       newItem: "",
       todos: [],
+      status: false,
     };
   },
   methods: {
     addItem(event) {
       if (this.newItem === "") return;
-
       const todo = {
         item: this.newItem,
+        status: false,
       };
       this.todos.push(todo);
       this.newItem = "";
@@ -91,5 +98,10 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   padding: 4px;
+}
+
+>>> label {
+  display: flex;
+  background: #faebd7;
 }
 </style>
