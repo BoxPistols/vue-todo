@@ -1,10 +1,5 @@
 <template>
   <div class="box">
-    <!-- <code class="debug">
-      <ul v-for="todo in $data.todos" :key="todo.index">
-        <li>{{ todo }}</li>
-      </ul>
-    </code> -->
     <div class="section">
       <b-card-group>
         <b-card bg-variant="dark" text-variant="light">
@@ -26,6 +21,7 @@
                   id="my-items"
                   v-model="newItem"
                   placeholder="input..."
+                  maxLength="32"
                 ></b-form-input>
                 <button class="ml-1 btn btn-primary" v-on:click="addItem">
                   Add
@@ -66,7 +62,12 @@
               >
             </b-list-group-item>
           </b-list-group>
-          <b-list-group-item class="flex pd-2">
+
+          <b-list-group-item class="flex center pd-2">
+            <div class="c-total pl-1">
+              Todo: {{ todoCount }} => Done: {{ todoRemaining }} / Total:
+              {{ todoTotal }}
+            </div>
             <b-button
               class="my-1 mr-1 ml-auto"
               variant="warning"
@@ -113,6 +114,21 @@ export default {
     },
     delAll(index) {
       this.todos.splice(index, this.todos.length);
+    },
+  },
+  computed: {
+    todoTotal() {
+      return this.todos.length;
+    },
+    todoRemaining() {
+      return this.todos.filter(function (v) {
+        return v.status;
+      }).length;
+    },
+    todoCount() {
+      return this.todos.filter(function (v) {
+        return !v.status;
+      }).length;
     },
   },
 };
