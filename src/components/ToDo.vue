@@ -107,6 +107,8 @@ export default {
       this.newItem = '';
     },
     delItem(index) {
+      // TODO:  Delete Status
+      // alert(this.status);
       this.todos.splice(index, 1);
     },
     delAll(index) {
