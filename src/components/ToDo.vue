@@ -41,13 +41,40 @@
     <div class="section">
       <b-card-group>
         <b-card no-body header="Card with flush list group">
-          <b-list-group flush v-for="todo in todos" :key="todo.index">
-            <b-list-group-item>
-              <b-form-checkbox value="todo" v-model="todo.status">
+          <b-list-group
+            class="c-todos"
+            flush
+            v-for="(todo, index) in todos"
+            :key="todo.index"
+          >
+            <!-- Loop ToTo List -->
+            <b-list-group-item class="flex pd-2">
+              <b-form-checkbox
+                :class="{ todoDone: todo.status }"
+                value="todo"
+                size="lg"
+                v-model="todo.status"
+              >
                 {{ todo.item }}
               </b-form-checkbox>
+              <b-button
+                class="ml-1 pd-0 ml-auto"
+                variant="danger"
+                size="sm"
+                v-on:click="delItem(index)"
+                >Del</b-button
+              >
             </b-list-group-item>
           </b-list-group>
+          <b-list-group-item class="flex pd-2">
+            <b-button
+              class="my-1 mr-1 ml-auto"
+              variant="warning"
+              size="sm"
+              v-on:click="delAll(index)"
+              >delAll</b-button
+            >
+          </b-list-group-item>
         </b-card>
       </b-card-group>
     </div>
@@ -63,21 +90,27 @@
 export default {
   data() {
     return {
-      msg: "Hello",
-      newItem: "",
+      msg: 'Hello',
+      newItem: '',
       todos: [],
       status: false,
     };
   },
   methods: {
     addItem(event) {
-      if (this.newItem === "") return;
+      if (this.newItem === '') return;
       const todo = {
         item: this.newItem,
         status: false,
       };
       this.todos.push(todo);
-      this.newItem = "";
+      this.newItem = '';
+    },
+    delItem(index) {
+      this.todos.splice(index, 1);
+    },
+    delAll(index) {
+      this.todos.splice(index, this.todos.length);
     },
   },
 };
@@ -100,8 +133,12 @@ export default {
   padding: 4px;
 }
 
->>> label {
+>>> label.custom-control-label {
   display: flex;
-  background: #faebd7;
+  background: aliceblue;
+}
+
+.c-todos .todoDone {
+  color: lightgray;
 }
 </style>

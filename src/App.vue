@@ -14,11 +14,10 @@
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld";
-import ToDo from "./components/ToDo";
+import ToDo from './components/ToDo';
 
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       // isDone: false,
@@ -34,11 +33,10 @@ export default {
 @import url("https://bootstrapbuildspace.sfo2.cdn.digitaloceanspaces.com//NYsiLXJhQPZL/avwgbGyXdigf/bootstrap.min.css")
 
 #app
-  font-family: "Avenir", Helvetica, _Segoe UI, _Arial, BIZ UDPゴシック, sans-serif
+  font-family: "Avenir", Helvetica, BIZ UDPゴシック, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  // text-align: center
-  color: #2c3e50
+  color: lighten(#2c3e50, 10%)
   margin: 20px auto
   font-size: 1em
 </style>
