@@ -44,14 +44,14 @@
             :key="todo.index"
           >
             <!-- Loop ToTo List -->
-            <b-list-group-item class="flex pd-2">
+            <b-list-group-item class="flex py-2 px-3">
               <b-form-checkbox
                 :class="{ todoDone: todo.status }"
                 value="todo"
                 size="lg"
                 v-model="todo.status"
               >
-                {{ todo.item }}
+                {{ index }}: {{ todo.item }}
               </b-form-checkbox>
               <b-button
                 class="ml-1 pd-0 ml-auto"
@@ -63,25 +63,27 @@
             </b-list-group-item>
           </b-list-group>
 
-          <b-list-group-item class="flex center pd-2">
+          <b-list-group-item class="flex center py-2 px-3">
             <div class="c-total pl-1">
               todo: {{ todoCount }} => done: {{ todoRemaining }} / total:
               {{ todoTotal }}
             </div>
-            <b-button
-              class="my-1 mr-1 ml-auto"
-              variant="warning"
-              size="sm"
-              v-on:click="todoClean"
-              >clean</b-button
-            >
-            <b-button
-              class="my-1 mr-1 ml-auto"
-              variant="danger"
-              size="sm"
-              v-on:click="delAll(index)"
-              >delAll</b-button
-            >
+            <div class="c-button-area ml-auto">
+              <b-button
+                class="mr-2"
+                variant="warning"
+                size="sm"
+                v-on:click="todoClean"
+                >done clean</b-button
+              >
+              <b-button
+                class=""
+                variant="danger"
+                size="sm"
+                v-on:click="delAll(index)"
+                >delAll items</b-button
+              >
+            </div>
           </b-list-group-item>
         </b-card>
       </b-card-group>
@@ -91,20 +93,76 @@
     <code class="debug">
       {{ $data }}
     </code>
+
+    <!-- コンポーネント MyModal 個別削除-->
+    <Modal @close="closeModal" v-if="modal">
+      <!-- <p>Vue.js Modal Window!</p> -->
+      <!-- <div><input v-model="message" /></div> -->
+      <template slot="header"
+        ><h2>{{ checkMessage }}</h2></template
+      >
+      <template slot="footer">
+        <b-button class="" variant="info" size="sm" @click="closeModal()"
+          >キャンセル</b-button
+        >
+        <b-button class="" variant="danger" size="sm" @click="doDelItem(index)"
+          >送信</b-button
+        >
+      </template>
+    </Modal>
+
+    <!-- modal for Del All -->
+    <Modal @close="closeModal_delAll" v-if="modal_delAll">
+      <template slot="header"
+        ><h2>{{ checkMessage }}</h2></template
+      >
+
+      <template slot="footer">
+        <b-button class="" variant="info" size="sm" @click="closeModal_delAll()"
+          >キャンセル</b-button
+        >
+        <b-button
+          class=""
+          variant="danger"
+          size="sm"
+          @click="doDelItem_delAll(index)"
+          >送信</b-button
+        >
+      </template>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Modal from '../utility/Modal.vue';
+
 export default {
+  components: { Modal },
   data() {
     return {
       msg: 'Hello',
       newItem: '',
       todos: [],
       status: false,
+      index: '',
+      // Modal
+      modal: false,
+      checkMessage: '',
+      modal_delAll: false,
     };
   },
   methods: {
+    // Modal
+    openModal() {
+      this.modal = true;
+    },
+    closeModal() {
+      this.modal = false;
+    },
+    closeModal_delAll() {
+      this.modal_delAll = false;
+    },
+
     addItem(event) {
       if (this.newItem === '') return;
       const todo = {
@@ -115,16 +173,30 @@ export default {
       this.newItem = '';
     },
     delItem(index) {
-      // alert(this.status);
-      // alert(this.todos[index].status);
       if (!this.todos[index].status) {
-        this.todos.splice(index, 0);
+        // Modal
+        this.modal = false;
+        // this.todos.splice(index, 0);
       } else {
-        this.todos.splice(index, 1);
+        // Modal
+        this.modal = true;
+        this.checkMessage = this.todos[index].item + 'を削除しますか？';
+        // this.todos.splice(index, 1);
       }
+    }, // Modal
+    doDelItem(index) {
+      this.todos.splice(index, 1);
+      this.modal = false;
     },
     delAll(index) {
+      if (!this.todos.length > 0) return;
+      this.modal_delAll = true;
+      this.checkMessage = '全て削除しますか？';
+    },
+    // Modal
+    doDelItem_delAll(index) {
       this.todos.splice(index, this.todos.length);
+      this.modal_delAll = false;
     },
     todoClean() {
       this.todos = this.todos.filter(function (v) {
