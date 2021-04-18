@@ -18,7 +18,7 @@
   </transition>
 </template>
 
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
 .modal {
   min-width: 80vw;
 
@@ -53,7 +53,8 @@
 }
 
 // オーバーレイのトランジション
-.modal-enter-active, .modal-leave-active {
+.modal-enter-active,
+.modal-leave-active {
   transition: opacity 0.3s;
 
   // オーバーレイに包含されているモーダルウィンドウのトランジション
@@ -67,7 +68,8 @@
   transition: opacity 0.3s ease 0.2s;
 }
 
-.modal-enter, .modal-leave-to {
+.modal-enter,
+.modal-leave-to {
   opacity: 0;
 
   .modal-window {
