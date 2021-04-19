@@ -10,21 +10,24 @@
             <img width="60px" src="./assets/logo.png" />
         </div>
         <ToDo />
+        <Dentaku />
     </div>
 </template>
 
 <script>
 import ToDo from './components/todo/ToDo'
+import Dentaku from './components/dentaku/dentaku.vue'
 
 export default {
     name: 'App',
     data() {
         return {
-            // isDone: false,
+            isDone: false,
         }
     },
     components: {
         ToDo,
+        Dentaku,
     },
 }
 </script>

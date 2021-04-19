@@ -83,6 +83,18 @@
         </div>
         <!-- /Add Lists -->
 
+        <div class="relative">
+            <div class="absolute">
+                <label>
+                    <input type="checkbox" v-model="isOK" />Chenge
+                </label>
+
+                <transition>
+                    <p v-if="isOK">Anime</p>
+                </transition>
+            </div>
+        </div>
+
         <code class="debug">{{ $data }}</code>
 
         <!-- コンポーネント MyModal 個別削除-->
@@ -119,9 +131,11 @@ export default {
     components: { Modal },
     data() {
         return {
+            isOK: false,
             msg: 'Hello',
             newItem: '',
             todos: [],
+            todo: '',
             status: false,
             index: '',
             // Modal
@@ -218,8 +232,25 @@ export default {
         padding: 4px;
     }
 
+    .relative {
+        position: relative;
+        min-height: 60px;
+    }
+    .absolute {
+        position: absolute;
+    }
     .c-todos .todoDone {
         color: lightgray;
         text-decoration: line-through;
+    }
+    // Animation
+    .v-enter-active,
+    .v-leave-active {
+        transition: 0.5s;
+    }
+    .v-enter,
+    .v-leave-to {
+        opacity: 0;
+        transform: translateX(20px);
     }
 </style>
