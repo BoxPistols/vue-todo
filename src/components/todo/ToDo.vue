@@ -76,7 +76,7 @@
                                 size="sm"
                                 v-on:click="delAll(index)"
                             >delAll items</b-button>
-                        </div>
+                        </div>  
                     </b-list-group-item>
                 </b-card>
             </b-card-group>
