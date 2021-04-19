@@ -9,14 +9,16 @@
         <div class="flex center">
             <img width="60px" src="./assets/logo.png" />
         </div>
-        <ToDo />
-        <Dentaku />
+        <!-- <ToDo /> -->
+        <BitCoin />
+        <!-- <Dentaku /> -->
     </div>
 </template>
 
 <script>
-import ToDo from './components/todo/ToDo'
-import Dentaku from './components/dentaku/dentaku.vue'
+// import ToDo from './components/todo/ToDo'
+// import Dentaku from './components/dentaku/dentaku.vue'
+import BitCoin from './components/api/bitCoin/bitCoin.vue'
 
 export default {
     name: 'App',
@@ -26,8 +28,9 @@ export default {
         }
     },
     components: {
-        ToDo,
-        Dentaku,
+        // ToDo,
+        // Dentaku,
+        BitCoin,
     },
 }
 </script>
