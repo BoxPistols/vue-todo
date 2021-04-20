@@ -5,8 +5,11 @@
                 <h1>{{ title }}</h1>
                 <div class="m-api">
                     <div class="c-bpi">
-                        <ul v-for="(d, index) in bpi " :key="d.index">
-                            <li>{{ index }} : {{ d.rate_float}}</li>
+                        <ul>
+                            <li
+                                v-for="(d, index) in bpi "
+                                :key="d.index"
+                            >{{ index }} : {{ d.rate_float | currencyDecimal(2) }}</li>
                         </ul>
                     </div>
                 </div>
@@ -36,8 +39,16 @@ export default {
                 console.log(error)
             })
     },
+    filters: {
+        currencyDecimal(x, y) {
+            return x.toFixed(y)
+        },
+    },
 }
 </script>
 
 <style lang="scss" scoped>
+    .c-bpi {
+        margin: 24px auto;
+    }
 </style>
