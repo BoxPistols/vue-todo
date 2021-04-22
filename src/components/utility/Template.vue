@@ -74,6 +74,23 @@
                 </section>
             </div>
         </div>
+        <div class="row">
+            <section class="section">
+                <h2>Get/ Set</h2>
+                <div class="col">
+                    元値：
+                    <input type="number" v-model="basePrice" />
+                </div>
+                <div class="col">
+                    税込：
+                    <input type="number" v-model="taxCalc" />
+                </div>
+                <div class="col">
+                    送料：
+                    <input type="number" v-model="sendPrise" />
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
@@ -87,6 +104,8 @@ export default {
             price: 29800,
             url: 'https://www.google.com/',
             reverseMessage: 'reverseMessage',
+            basePrice: 1500,
+            sendPrise: 500,
         }
     },
     computed: {
@@ -95,6 +114,16 @@ export default {
                 .split()
                 .reverse()
                 .join('')
+        },
+        taxCalc: {
+            get: function() {
+                // return (this.basePrice * 1.1).toFixed(0)
+                return parseInt(this.basePrice * 1.1) + parseInt(this.sendPrise)
+            },
+            set: function(taxCalc) {
+                this.basePrice =
+                    Math.ceil(taxCalc / 1.1) - Math.ceil(this.sendPrise)
+            },
         },
     },
     methods: {
