@@ -10,27 +10,30 @@
             <img width="60px" src="./assets/logo.png" />
         </div>
         <!-- <ToDo /> -->
-        <BitCoin />
+        <!-- <BitCoin /> -->
         <!-- <Dentaku /> -->
+        <Template />
     </div>
 </template>
 
 <script>
 // import ToDo from './components/todo/ToDo'
-// import Dentaku from './components/dentaku/dentaku.vue'
-import BitCoin from './components/api/bitCoin/bitCoin.vue'
+// import Dentaku from './components/dentaku/dentaku'
+// import BitCoin from './components/api/bitCoin/bitCoin'
+import Template from './components/utility/Template'
 
 export default {
     name: 'App',
     data() {
         return {
-            isDone: false,
+            // isDone: false,
         }
     },
     components: {
         // ToDo,
         // Dentaku,
-        BitCoin,
+        // BitCoin,
+        Template,
     },
 }
 </script>
