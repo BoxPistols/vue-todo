@@ -9,8 +9,8 @@
 
             <div class="row">
                 <p>isOk ? 'Yes' : 'No' / 三項演算子の埋め込み</p>
-                <div class="h3 col text-center">{{ isOk ? 'Yes' : 'No'}}</div>
-                <div class="col">
+                <div class="h3 text-center">{{ isOk ? 'Yes' : 'No' }}</div>
+                <div class>
                     <button class="btn btn-primary" @click="toggle">Toggle</button>
                 </div>
             </div>
@@ -22,17 +22,17 @@
 
                     <h2>v-pre</h2>
                     <div>
-                        <span>never change: {{message}}</span>
+                        <span>never change: {{ message }}</span>
                     </div>
                     <div>
-                        <span v-pre>v-pre / never change: {{message}}</span>
+                        <span v-pre>v-pre / never change: {{ message }}</span>
                     </div>
                     <button @click="once">Once</button>
                 </section>
                 <section class="section">
                     <h2>v-html</h2>
                     <div>
-                        <span>This will never change: {{myHtml}}</span>
+                        <span>This will never change: {{ myHtml }}</span>
                     </div>
                     <div>
                         <span v-html="myHtml"></span>
@@ -44,8 +44,15 @@
                 <section class="section">
                     <h2>Filter</h2>
                     <p>toLocal: {{ price | toLocal }}</p>
-                    <p>numberToLocaleString : {{ price | numberToLocaleString }}</p>
-                    <input type="number" v-model.number="price " />
+                    <p>
+                        numberToLocaleString :
+                        {{ price | numberToLocaleString }}
+                    </p>
+                    <p>
+                        numberToUSD :
+                        {{ price | numberToUSD | numberToLocaleString }}
+                    </p>
+                    <input type="number" v-model.number="price" />
                 </section>
             </div>
         </div>
@@ -84,6 +91,14 @@ export default {
 <style scoped lang="scss">
     @import url('https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css');
 
+    h2 {
+        border-left: 4px solid lightsalmon;
+        font-size: 1.5em;
+        /* color: whitesmoke; */
+        padding: 2px 12px;
+        margin: 21px 0 8px;
+        /* text-align: center; */
+    }
     .container {
         font-size: 20px;
         padding: 2vh 4vw;
