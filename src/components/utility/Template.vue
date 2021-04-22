@@ -62,9 +62,15 @@
                     <p>
                         def:
                         <a href="https://www.google.com/" target="_blank">Google URL</a>
-                        bind:
+                        <br />bind:
                         <a :href="url" target="_blank">Google URL</a>
                     </p>
+                </section>
+            </div>
+            <div class="row">
+                <section class="section">
+                    <h2>Computed</h2>
+                    <div class="col">Reverse : {{ reverseWord }}</div>
                 </section>
             </div>
         </div>
@@ -80,7 +86,16 @@ export default {
             myHtml: 'Hello<span style="color:red;">Inline</span>',
             price: 29800,
             url: 'https://www.google.com/',
+            reverseMessage: 'reverseMessage',
         }
+    },
+    computed: {
+        reverseWord() {
+            return this.reverseMessage
+                .split()
+                .reverse()
+                .join('')
+        },
     },
     methods: {
         toggle() {
