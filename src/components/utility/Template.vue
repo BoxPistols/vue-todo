@@ -55,6 +55,18 @@
                     <input type="number" v-model.number="price" />
                 </section>
             </div>
+
+            <div class="row">
+                <section class="section">
+                    <h2>URL</h2>
+                    <p>
+                        def:
+                        <a href="https://www.google.com/" target="_blank">Google URL</a>
+                        bind:
+                        <a :href="url" target="_blank">Google URL</a>
+                    </p>
+                </section>
+            </div>
         </div>
     </div>
 </template>
@@ -67,6 +79,7 @@ export default {
             message: 'World',
             myHtml: 'Hello<span style="color:red;">Inline</span>',
             price: 29800,
+            url: 'https://www.google.com/',
         }
     },
     methods: {
@@ -97,7 +110,6 @@ export default {
         /* color: whitesmoke; */
         padding: 2px 12px;
         margin: 21px 0 8px;
-        /* text-align: center; */
     }
     .container {
         font-size: 20px;
