@@ -14,7 +14,7 @@
         "babel-loader": "8.2.2",
         "bootstrap": "4.6.0",
         "bootstrap-vue": "2.21.2",
-        "node-sass": "^5.0.0",
+        "node-sass": "^7.0.0",
         "sass": "^1.32.10",
         "sass-loader": "10.1.1",
         "stylus-loader": "^5.0.0",
